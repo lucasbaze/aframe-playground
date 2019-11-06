@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- A Frame -->
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <!-- Extras : Movement Controls -->
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Assets -->
+        <a-assets>
+            <img id="drake" src="../assets/imgs/Drake.png" />
+            <img id="grass" src="../assets/imgs/grass.jpg" />
+            <img id="clouds" src="../assets/imgs/clouds2.jpg" />
+        </a-assets>
+
+        <!-- Body -->
+        <a-box
+            height="1.6"
+            width="0.5"
+            depth="0.5"
+            rotation="0 0 0"
+            color="rgba(180,42,212,1)"
+            position="0 0.8 -3"
+            shadow
+        >
+        </a-box>
+
+        <!-- Head -->
+        <a-entity
+            animation="property: position; to: 0 1 0; dur: 2000; loop: true; dir: alternate;"
+        >
+            <a-sphere
+                radius="0.25"
+                src="#drake"
+                position="0 2 -3"
+                shadow
+                animation="property: rotation; to: 0 720; dir: alternate; easing: linear; dur: 4000; loop: true;"
+            >
+            </a-sphere>
+        </a-entity>
+
+        <a-entity
+            position="0.2 1.6 -3"
+            animation="property: rotation; to: 0 0 60; dur: 2000; dir: alternate; loop: true; easing: linear;"
+        >
+            <a-box
+                height="0.7"
+                width="0.1"
+                depth="0.1"
+                color="rgb(70, 15, 172)"
+                rotation="0 0 30"
+                position="0.15 -0.4 0"
+                shadow
+            >
+            </a-box>
+        </a-entity>
+
+        <a-entity
+            position="-0.2 1.6 -3"
+            animation="property: rotation; to: 0 0 -60; dur: 2000; dir: alternate; loop: true; easing: linear;"
+        >
+            <a-box
+                height="0.7"
+                width="0.1"
+                depth="0.1"
+                color="rgb(70, 15, 172)"
+                rotation="0 0 -30"
+                position="-0.15 -0.4 0"
+                shadow
+            >
+            </a-box>
+        </a-entity>
+
+        <!-- Ground -->
+        <a-plane
+            width="100"
+            height="100"
+            rotation="-90 0 0"
+            src="#grass"
+            repeat="100 80"
+            position="0 0 0"
+            shadow
+        >
+        </a-plane>
+
+        <!-- Sky -->
+        <a-sky radius="70" src="#clouds"></a-sky>
+
+        <!-- Camera -->
+        <a-entity movement-controls="fly: true" position="0 1.6 0">
+            <a-entity camera wasd-controls look-controls></a-entity>
+        </a-entity>
+    </a-scene>
+</body>
